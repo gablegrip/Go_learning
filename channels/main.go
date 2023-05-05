@@ -2,11 +2,9 @@ package main
 
 import (
 	"log"
-
-	"github.com/gablegrip/myniceprogram/helpers"
 )
 
-const numPool = 10
+const numPool = 1000
 
 func CalulateValue(intChan chan int) {
 	randomNumber := helpers.RandomNumber(numPool)
