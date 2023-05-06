@@ -1,20 +1,20 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
-	var myString string
-	myString = "Green"
+	// fmt.Println("Hello World!")
 
-	log.Println("myString is set to", myString)
-	changeUsingPointer(&myString)
-	log.Println("after func call myString is set to", myString)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		n, err := fmt.Fprintf(w, "Hello, World!")
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(fmt.Sprintf("Number of bytes written: %d", n))
+	})
 
-}
-
-func changeUsingPointer(s *string) {
-	log.Println("s is set to", s)
-	newValue := "Red"
-
-	*s = newValue
+	_ = http.ListenAndServe(":8080", nil)
 }
