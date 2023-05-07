@@ -25,7 +25,8 @@ func renderTemplate(w http.ResponseWriter, tmpl string) {
 	err := parsedTemplate.Execute(w, nil)
 	if err != nil {
 		fmt.Println("Error parsing template:", err)
-		return
+	}
+
 }
 
 // main is the main application function
@@ -36,4 +37,3 @@ func main() {
 	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
 	_ = http.ListenAndServe(portNumber, nil)
 }
-
